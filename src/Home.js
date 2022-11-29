@@ -4,13 +4,21 @@ import { AppContext, useGlobalContext } from "./context";
 
 const Home = () => {
   // const data = useContext(AppContext);
-  const data = useGlobalContext();
+  const { isModalShowed, setIsModalShowed } = useGlobalContext();
+  console.log("home", isModalShowed);
   return (
     <main>
       <button className="sidebar-toggle">
         <FaBars />
       </button>
-      <button className="btn">show modal</button>
+      <button
+        className="btn"
+        onClick={() => {
+          setIsModalShowed(false);
+        }}
+      >
+        show modal
+      </button>
     </main>
   );
 };

@@ -8,7 +8,20 @@ const AppContext = React.createContext();
 
 // }
 const AppProvider = ({ children }) => {
-  return <AppContext.Provider value="Hello"> {children}</AppContext.Provider>;
+  const [isModalShowed, setIsModalShowed] = useState(false);
+  const [isSideBarShowed, setIsSideBarShowed] = useState(false);
+  return (
+    <AppContext.Provider
+      value={{
+        isModalShowed,
+        setIsModalShowed,
+        isSideBarShowed,
+        setIsSideBarShowed,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
 };
 
 const useGlobalContext = () => {
