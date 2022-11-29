@@ -2,13 +2,20 @@ import React from "react";
 import logo from "./logo.svg";
 import { FaTimes } from "react-icons/fa";
 import { social, links } from "./data";
+import { useGlobalContext } from "./context";
 
 const Sidebar = () => {
+  const { setIsSideBarShowed, isSideBarShowed } = useGlobalContext();
   return (
-    <aside className={`sidebar show-sidebar`}>
+    <aside className={`sidebar ${isSideBarShowed ? "show-sidebar" : null}`}>
       <div className="sidebar-header">
         <img src={logo} alt="coding" />
-        <button className="close-btn">
+        <button
+          onClick={() => {
+            setIsSideBarShowed(false);
+          }}
+          className="close-btn"
+        >
           <FaTimes />
         </button>
       </div>
